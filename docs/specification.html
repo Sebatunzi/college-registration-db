@@ -1,0 +1,117 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Database Design Specification – College Registration System</title>
+<style>
+  @page { size: A4 landscape; margin: 8mm 9mm; }
+  * { box-sizing: border-box; }
+  body { margin: 0; font-family: "Segoe UI", Helvetica, Arial, sans-serif; color: #1a1a1a; font-size: 7.9pt; line-height: 1.28; }
+  header { display: flex; justify-content: space-between; align-items: flex-end; border-bottom: 2.5px solid #1f4e79; padding-bottom: 3px; margin-bottom: 5px; }
+  h1 { font-size: 15pt; margin: 0; color: #1f4e79; letter-spacing: .2px; }
+  .sub { font-size: 8.5pt; color: #5b6470; margin-top: 1px; }
+  .meta { text-align: right; font-size: 8pt; color: #333; line-height: 1.5; }
+  .meta b { color: #1f4e79; }
+  .grid { display: grid; grid-template-columns: 34% 1fr; gap: 9px; }
+  h2 { font-size: 9pt; color: #fff; background: #1f4e79; margin: 0 0 3px; padding: 2px 6px; border-radius: 2px; }
+  section { margin-bottom: 5px; }
+  p { margin: 0 0 3px; }
+  ul, ol { margin: 0; padding-left: 13px; }
+  li { margin-bottom: 1px; }
+  table { border-collapse: collapse; width: 100%; }
+  td, th { border: 1px solid #c9d3de; padding: 1.5px 4px; vertical-align: top; text-align: left; }
+  th { background: #e8eef5; color: #1f4e79; font-weight: 700; }
+  .br td:first-child { font-weight: 700; color: #1f4e79; width: 24px; }
+  .erd { border: 1px solid #c9d3de; border-radius: 3px; padding: 2px; }
+  .erd img { width: 100%; display: block; }
+  .legend { font-size: 7.2pt; color: #5b6470; margin-top: 2px; }
+  .legend span { display: inline-block; padding: 0 4px; margin-right: 6px; border: 1px solid #c9d3de; }
+  .two { display: grid; grid-template-columns: 1fr 1fr; gap: 9px; }
+  code { font-family: Consolas, "Courier New", monospace; font-size: 7.4pt; background: #f2f4f7; padding: 0 2px; }
+</style>
+</head>
+<body>
+<header>
+  <div>
+    <h1>Database Design Specification: College Registration System</h1>
+    <div class="sub">Design Activity &amp; Practical: requirements, conceptual model, relational tables and data types (drawn in Draw.io)</div>
+  </div>
+  <div class="meta"><b>Prepared by:</b> ______________________ &nbsp; <b>Reg. No:</b> ______________<br>
+    <b>Date:</b> 21 October 2026 &nbsp; <b>DBMS target:</b> MySQL 8 / PostgreSQL</div>
+</header>
+
+<div class="grid">
+  <!-- ============ LEFT: requirements ============ -->
+  <div>
+    <section>
+      <h2>1. Purpose &amp; scope</h2>
+      <p>The system stores departments, programmes, courses and lecturers, and lets admitted students register for the courses in their programme each semester. The Registrar approves registrations and lecturers record final grades. <i>Out of scope:</i> fees, timetabling, admissions applications.</p>
+    </section>
+    <section>
+      <h2>2. Users</h2>
+      <table>
+        <tr><td><b>Student</b></td><td>registers / drops courses, prints slip, views grades</td></tr>
+        <tr><td><b>Registrar</b></td><td>enrols students, maintains curricula, approves registrations</td></tr>
+        <tr><td><b>Lecturer</b></td><td>views class lists, enters final grades</td></tr>
+        <tr><td><b>Head of Dept.</b></td><td>assigns courses to lecturers, views statistics</td></tr>
+        <tr><td><b>Sys. Admin</b></td><td>user accounts, backups, security</td></tr>
+      </table>
+    </section>
+    <section>
+      <h2>3. Processes</h2>
+      <ol>
+        <li>Set up departments, programmes and each programme's curriculum.</li>
+        <li>HoD allocates a coordinating lecturer to each course.</li>
+        <li>Registrar enrols a student into one programme (unique reg. number).</li>
+        <li>Student registers for courses each semester (status <i>Pending</i>).</li>
+        <li>Registrar approves the registration, or the student drops it during add/drop.</li>
+        <li>Lecturer records the final grade (status <i>Completed</i>).</li>
+        <li>Reports: class lists, registration slips, pending approvals.</li>
+      </ol>
+    </section>
+    <section>
+      <h2>4. Business rules</h2>
+      <table class="br">
+        <tr><td>BR1</td><td>A department offers many programmes and employs many lecturers; each programme or lecturer belongs to <b>one</b> department.</td></tr>
+        <tr><td>BR2</td><td>A student is enrolled in exactly <b>one</b> programme.</td></tr>
+        <tr><td>BR3</td><td>A programme includes many courses, and a course can be in many programmes (M:N, resolved by <code>PROGRAMME_COURSE</code>).</td></tr>
+        <tr><td>BR4</td><td>Each course is coordinated by exactly one lecturer.</td></tr>
+        <tr><td>BR5</td><td>A student registers for many courses (M:N, resolved by <code>REGISTRATION</code>), but for the <b>same course only once per semester</b>.</td></tr>
+        <tr><td>BR6</td><td>Students may only take courses in their own programme, must be <i>Active</i>, and may take at most 24 credit units per semester.</td></tr>
+        <tr><td>BR7</td><td>Status is Pending, Approved, Dropped or Completed; a grade is only allowed when the status is Completed.</td></tr>
+        <tr><td>BR8</td><td>Reg. no., staff no., course and programme codes, and e-mails are unique.</td></tr>
+      </table>
+    </section>
+  </div>
+
+  <!-- ============ RIGHT: model ============ -->
+  <div>
+    <section>
+      <h2>5. Relational schema: 7 tables, keys, data types and relationships (crow's foot)</h2>
+      <div class="erd"><img src="../diagrams/relational_schema.svg" alt="Relational schema"></div>
+      <div class="legend"><span style="background:#fff2cc">PK primary key</span><span style="background:#dae8fc">FK foreign key</span><span>UQ unique</span>
+        |&mdash;&mdash;&lt; one-to-many &nbsp; o&lt; zero or many &nbsp; |&lt; one or many &nbsp;&bull;&nbsp; Columns are NOT NULL unless marked NULL. The conceptual ERD (Chen notation) is on page 1 of the Draw.io file.</div>
+    </section>
+    <div class="two">
+      <section>
+        <h2>6. Design checks</h2>
+        <ul>
+          <li><b>Primary keys:</b> every table has one. Surrogate <code>INT</code> keys are used, except <code>PROGRAMME_COURSE</code>, which has the composite key (programme_id, course_id).</li>
+          <li><b>Relationships:</b> each 1:N is a NOT NULL FK on the "many" side, and each M:N is resolved by an associative table. FKs use <code>ON DELETE RESTRICT</code>.</li>
+          <li><b>Normalised to 3NF:</b> there are no repeating groups or partial dependencies. A student's department is derived through the programme, not stored again.</li>
+        </ul>
+      </section>
+      <section>
+        <h2>7. Data types &amp; constraints</h2>
+        <ul>
+          <li><code>VARCHAR(n)</code> for names, codes and e-mails; <code>CHAR</code> for fixed lengths (<code>gender</code>, <code>academic_year</code> e.g. '2026/2027').</li>
+          <li><code>DATE</code> for birth, admission and registration dates; <code>SMALLINT</code> for credits, years and semesters; <code>BOOLEAN</code> for is_core.</li>
+          <li><code>CHECK</code>: semester in (1,2), credits 1–6, valid status and grade values. <code>UNIQUE</code> (student, course, year, semester) enforces BR5.</li>
+          <li>Implemented and tested in <code>sql/01_schema.sql</code>.</li>
+        </ul>
+      </section>
+    </div>
+  </div>
+</div>
+</body>
+</html>

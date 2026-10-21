@@ -1,0 +1,88 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="25 15 1065 535" font-family="Segoe UI, Helvetica, Arial, sans-serif">
+<rect width="1110" height="560" fill="#ffffff"/>
+<line x1="450" y1="75" x2="345" y2="75" stroke="#1f4e79" stroke-width="1.6"/>
+<text x="440" y="69" font-size="13" font-weight="700" text-anchor="end" fill="#c0392b">1</text>
+<line x1="250" y1="75" x2="345" y2="75" stroke="#1f4e79" stroke-width="1.6"/>
+<text x="260" y="69" font-size="13" font-weight="700" text-anchor="start" fill="#c0392b">N</text>
+<polygon points="345,47.0 401.0,75 345,103.0 289.0,75" fill="#fff2cc" stroke="#b38600" stroke-width="1.6"/>
+<text x="345" y="79" font-size="11.5" font-style="italic" text-anchor="middle" fill="#1a1a1a">offers</text>
+<line x1="660" y1="75" x2="765" y2="75" stroke="#1f4e79" stroke-width="1.6"/>
+<text x="670" y="69" font-size="13" font-weight="700" text-anchor="start" fill="#c0392b">1</text>
+<line x1="860" y1="75" x2="765" y2="75" stroke="#1f4e79" stroke-width="1.6"/>
+<text x="850" y="69" font-size="13" font-weight="700" text-anchor="end" fill="#c0392b">N</text>
+<polygon points="765,47.0 821.0,75 765,103.0 709.0,75" fill="#fff2cc" stroke="#b38600" stroke-width="1.6"/>
+<text x="765" y="79" font-size="11.5" font-style="italic" text-anchor="middle" fill="#1a1a1a">employs</text>
+<line x1="145" y1="136" x2="145" y2="250" stroke="#1f4e79" stroke-width="1.6"/>
+<text x="153" y="152" font-size="13" font-weight="700" text-anchor="start" fill="#c0392b">1</text>
+<line x1="145" y1="330" x2="145" y2="250" stroke="#1f4e79" stroke-width="1.6"/>
+<text x="153" y="324" font-size="13" font-weight="700" text-anchor="start" fill="#c0392b">N</text>
+<polygon points="145,222.0 201.0,250 145,278.0 89.0,250" fill="#fff2cc" stroke="#b38600" stroke-width="1.6"/>
+<text x="145" y="254" font-size="11.5" font-style="italic" text-anchor="middle" fill="#1a1a1a">enrols in</text>
+<line x1="250" y1="116" x2="555" y2="250" stroke="#1f4e79" stroke-width="1.6"/>
+<text x="260" y="132" font-size="13" font-weight="700" text-anchor="start" fill="#c0392b">M</text>
+<line x1="860" y1="350" x2="555" y2="250" stroke="#1f4e79" stroke-width="1.6"/>
+<text x="850" y="344" font-size="13" font-weight="700" text-anchor="end" fill="#c0392b">N</text>
+<polygon points="555,222.0 611.0,250 555,278.0 499.0,250" fill="#fff2cc" stroke="#b38600" stroke-width="1.6"/>
+<text x="555" y="254" font-size="11.5" font-style="italic" text-anchor="middle" fill="#1a1a1a">includes</text>
+<line x1="965" y1="136" x2="965" y2="250" stroke="#1f4e79" stroke-width="1.6"/>
+<text x="973" y="152" font-size="13" font-weight="700" text-anchor="start" fill="#c0392b">1</text>
+<line x1="965" y1="330" x2="965" y2="250" stroke="#1f4e79" stroke-width="1.6"/>
+<text x="973" y="324" font-size="13" font-weight="700" text-anchor="start" fill="#c0392b">N</text>
+<polygon points="965,222.0 1021.0,250 965,278.0 909.0,250" fill="#fff2cc" stroke="#b38600" stroke-width="1.6"/>
+<text x="965" y="254" font-size="11.5" font-style="italic" text-anchor="middle" fill="#1a1a1a">coordinates</text>
+<line x1="250" y1="450" x2="345" y2="450" stroke="#1f4e79" stroke-width="1.6"/>
+<text x="260" y="444" font-size="13" font-weight="700" text-anchor="start" fill="#c0392b">1</text>
+<line x1="450" y1="450" x2="345" y2="450" stroke="#1f4e79" stroke-width="1.6"/>
+<text x="440" y="444" font-size="13" font-weight="700" text-anchor="end" fill="#c0392b">N</text>
+<polygon points="345,422.0 401.0,450 345,478.0 289.0,450" fill="#fff2cc" stroke="#b38600" stroke-width="1.6"/>
+<text x="345" y="454" font-size="11.5" font-style="italic" text-anchor="middle" fill="#1a1a1a">makes</text>
+<line x1="860" y1="420" x2="765" y2="420" stroke="#1f4e79" stroke-width="1.6"/>
+<text x="850" y="414" font-size="13" font-weight="700" text-anchor="end" fill="#c0392b">1</text>
+<line x1="660" y1="420" x2="765" y2="420" stroke="#1f4e79" stroke-width="1.6"/>
+<text x="670" y="414" font-size="13" font-weight="700" text-anchor="start" fill="#c0392b">N</text>
+<polygon points="765,392.0 821.0,420 765,448.0 709.0,420" fill="#fff2cc" stroke="#b38600" stroke-width="1.6"/>
+<text x="765" y="424" font-size="11.5" font-style="italic" text-anchor="middle" fill="#1a1a1a">is for</text>
+<rect x="450" y="30" width="210" height="68" rx="6" fill="#dae8fc" stroke="#1f4e79" stroke-width="1.6"/>
+<text x="555.0" y="50" font-size="14" font-weight="700" text-anchor="middle" fill="#1f4e79">DEPARTMENT</text>
+<line x1="450" y1="58" x2="660" y2="58" stroke="#1f4e79"/>
+<text x="462" y="72" font-size="12" text-decoration="underline" font-weight="700" fill="#1a1a1a">department_id</text>
+<text x="462" y="91" font-size="12" fill="#1a1a1a">department_name</text>
+<rect x="40" y="30" width="210" height="106" rx="6" fill="#dae8fc" stroke="#1f4e79" stroke-width="1.6"/>
+<text x="145.0" y="50" font-size="14" font-weight="700" text-anchor="middle" fill="#1f4e79">PROGRAMME</text>
+<line x1="40" y1="58" x2="250" y2="58" stroke="#1f4e79"/>
+<text x="52" y="72" font-size="12" text-decoration="underline" font-weight="700" fill="#1a1a1a">programme_id</text>
+<text x="52" y="91" font-size="12" fill="#1a1a1a">programme_name</text>
+<text x="52" y="110" font-size="12" fill="#1a1a1a">award_level</text>
+<text x="52" y="129" font-size="12" fill="#1a1a1a">duration_years</text>
+<rect x="860" y="30" width="210" height="106" rx="6" fill="#dae8fc" stroke="#1f4e79" stroke-width="1.6"/>
+<text x="965.0" y="50" font-size="14" font-weight="700" text-anchor="middle" fill="#1f4e79">LECTURER</text>
+<line x1="860" y1="58" x2="1070" y2="58" stroke="#1f4e79"/>
+<text x="872" y="72" font-size="12" text-decoration="underline" font-weight="700" fill="#1a1a1a">lecturer_id</text>
+<text x="872" y="91" font-size="12" fill="#1a1a1a">staff_number</text>
+<text x="872" y="110" font-size="12" fill="#1a1a1a">name</text>
+<text x="872" y="129" font-size="12" fill="#1a1a1a">email</text>
+<rect x="40" y="330" width="210" height="144" rx="6" fill="#dae8fc" stroke="#1f4e79" stroke-width="1.6"/>
+<text x="145.0" y="350" font-size="14" font-weight="700" text-anchor="middle" fill="#1f4e79">STUDENT</text>
+<line x1="40" y1="358" x2="250" y2="358" stroke="#1f4e79"/>
+<text x="52" y="372" font-size="12" text-decoration="underline" font-weight="700" fill="#1a1a1a">student_id</text>
+<text x="52" y="391" font-size="12" fill="#1a1a1a">reg_number</text>
+<text x="52" y="410" font-size="12" fill="#1a1a1a">name</text>
+<text x="52" y="429" font-size="12" fill="#1a1a1a">date_of_birth</text>
+<text x="52" y="448" font-size="12" fill="#1a1a1a">email</text>
+<text x="52" y="467" font-size="12" fill="#1a1a1a">status</text>
+<rect x="860" y="330" width="210" height="106" rx="6" fill="#dae8fc" stroke="#1f4e79" stroke-width="1.6"/>
+<text x="965.0" y="350" font-size="14" font-weight="700" text-anchor="middle" fill="#1f4e79">COURSE</text>
+<line x1="860" y1="358" x2="1070" y2="358" stroke="#1f4e79"/>
+<text x="872" y="372" font-size="12" text-decoration="underline" font-weight="700" fill="#1a1a1a">course_id</text>
+<text x="872" y="391" font-size="12" fill="#1a1a1a">course_code</text>
+<text x="872" y="410" font-size="12" fill="#1a1a1a">course_title</text>
+<text x="872" y="429" font-size="12" fill="#1a1a1a">credit_units</text>
+<rect x="450" y="400" width="210" height="125" rx="6" fill="#dae8fc" stroke="#1f4e79" stroke-width="1.6"/>
+<text x="555.0" y="420" font-size="14" font-weight="700" text-anchor="middle" fill="#1f4e79">REGISTRATION</text>
+<line x1="450" y1="428" x2="660" y2="428" stroke="#1f4e79"/>
+<text x="462" y="442" font-size="12" text-decoration="underline" font-weight="700" fill="#1a1a1a">registration_id</text>
+<text x="462" y="461" font-size="12" fill="#1a1a1a">academic_year</text>
+<text x="462" y="480" font-size="12" fill="#1a1a1a">semester_no</text>
+<text x="462" y="499" font-size="12" fill="#1a1a1a">status</text>
+<text x="462" y="518" font-size="12" fill="#1a1a1a">final_grade</text>
+</svg>
