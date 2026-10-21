@@ -1,0 +1,98 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Presentation Notes – College Registration System</title>
+<style>
+  @page { size: A4; margin: 14mm 16mm; }
+  body { font-family: "Segoe UI", Helvetica, Arial, sans-serif; color: #1a1a1a; font-size: 10.5pt; line-height: 1.45; margin: 0; }
+  h1 { font-size: 17pt; color: #1f4e79; margin: 0; }
+  .meta { color: #5b6470; font-size: 9.5pt; border-bottom: 2px solid #1f4e79; padding-bottom: 5px; margin-bottom: 10px; }
+  h2 { font-size: 11.5pt; color: #fff; background: #1f4e79; padding: 3px 8px; border-radius: 3px; margin: 12px 0 5px; }
+  h2 span { float: right; font-weight: 400; opacity: .85; }
+  ul { margin: 0; padding-left: 18px; }
+  li { margin-bottom: 2px; }
+  .say { border-left: 3px solid #2e75b6; background: #f2f6fb; padding: 5px 9px; margin: 4px 0; font-style: italic; }
+  table { border-collapse: collapse; width: 100%; font-size: 9.8pt; }
+  td { border: 1px solid #c9d3de; padding: 4px 7px; vertical-align: top; }
+  td:first-child { font-weight: 700; color: #1f4e79; width: 38%; }
+  .tip { font-size: 9.5pt; color: #5b6470; margin-top: 8px; }
+  section { page-break-inside: avoid; }
+</style>
+</head>
+<body>
+<h1>Presentation Notes: College Registration System Database Design</h1>
+<div class="meta">SHEMA SEBATUNZI Samuel &nbsp;·&nbsp; BSCSR/2026/69594 &nbsp;·&nbsp; 21 October 2026 &nbsp;·&nbsp; About 6–8 minutes</div>
+
+<section>
+<h2>Slide 1: Title <span>~30 s</span></h2>
+<div class="say">"Good evening. I am Shema Sebatunzi Samuel. I will present the database design for a college registration system, from the requirements to the final relational tables built in Draw.io."</div>
+</section>
+
+<section>
+<h2>Slide 2: Requirements: users &amp; processes <span>~1 min</span></h2>
+<ul>
+  <li><b>Goal:</b> let students register for the courses in their programme each semester.</li>
+  <li><b>Five users:</b> Student, Registrar, Lecturer, Head of Department, System Administrator.</li>
+  <li><b>Main flow:</b> enrol student → student registers (<i>Pending</i>) → Registrar approves (<i>Approved</i>) → lecturer enters grade (<i>Completed</i>).</li>
+  <li><b>Out of scope:</b> fees, timetabling, admissions.</li>
+</ul>
+</section>
+
+<section>
+<h2>Slide 3: Entities &amp; business rules <span>~1.5 min</span></h2>
+<ul>
+  <li><b>Entities:</b> Student, Programme, Course, Registration and Lecturer, plus <b>Department</b> to group programmes and staff.</li>
+  <li>A student belongs to <b>one</b> programme; a course has <b>one</b> coordinating lecturer.</li>
+  <li>A programme has many courses, and a course can be shared by many programmes (<b>many-to-many</b>).</li>
+  <li>A student can register for a course <b>only once per semester</b>.</li>
+  <li>A grade can be entered only when the registration is <b>Completed</b>.</li>
+</ul>
+<div class="say">"Each rule is enforced by the database itself, through keys and constraints, not only by the application."</div>
+</section>
+
+<section>
+<h2>Slide 4: Conceptual model (ERD) <span>~1.5 min</span></h2>
+<ul>
+  <li>Rectangles are <b>entities</b>, diamonds are <b>relationships</b>, and 1 / N / M show <b>cardinality</b>.</li>
+  <li>One-to-many: Department–Programme, Department–Lecturer, Programme–Student, Lecturer–Course.</li>
+  <li>Two many-to-many links: <b>Programme–Course</b> and <b>Student–Course</b> (through Registration).</li>
+</ul>
+</section>
+
+<section>
+<h2>Slide 5: Relational schema &amp; data types <span>~1.5 min</span></h2>
+<ul>
+  <li><b>7 tables.</b> Every table has a <b>primary key</b> (yellow); foreign keys are blue.</li>
+  <li>Each one-to-many relationship becomes a <b>foreign key</b> on the "many" side.</li>
+  <li>Each many-to-many relationship becomes a <b>junction table</b>: PROGRAMME_COURSE and REGISTRATION.</li>
+  <li><b>Data types:</b> INT for keys, VARCHAR for names and codes, DATE for dates, SMALLINT for credits and semesters, BOOLEAN for flags.</li>
+  <li>The design is normalised to <b>Third Normal Form</b>, so nothing is stored twice.</li>
+</ul>
+</section>
+
+<section>
+<h2>Slide 6: Implementation &amp; checks <span>~1 min</span></h2>
+<ul>
+  <li>I implemented the design in SQL and tested it with sample data.</li>
+  <li>The database <b>rejected</b> every invalid entry: a duplicate registration, an unknown student, an invalid value, an early grade, and deleting a department that is still in use.</li>
+</ul>
+<div class="say">"In conclusion, the design meets the requirements: every table has a primary key, the relationships are consistent, and the business rules are enforced. Thank you. I welcome your questions."</div>
+</section>
+
+<section>
+<h2>Likely questions &amp; short answers</h2>
+<table>
+  <tr><td>Why add a Department entity?</td><td>Programmes and lecturers both belong to a department. Storing it once avoids repeating department details.</td></tr>
+  <tr><td>Why is REGISTRATION a separate table?</td><td>Student–Course is many-to-many. The registration table resolves it and stores the year, semester, status and grade.</td></tr>
+  <tr><td>What is PROGRAMME_COURSE?</td><td>A junction table for the programme curriculum. Its primary key is the pair (programme_id, course_id).</td></tr>
+  <tr><td>How do you stop double registration?</td><td>A UNIQUE constraint on (student, course, academic year, semester).</td></tr>
+  <tr><td>Why surrogate (INT) keys?</td><td>They are short, stable and fast to join. Real-world codes such as reg_number stay UNIQUE.</td></tr>
+  <tr><td>Is it normalised?</td><td>Yes, to 3NF. There are no repeating groups and no partial or transitive dependencies.</td></tr>
+  <tr><td>What happens if a department is deleted?</td><td>It is blocked (ON DELETE RESTRICT) while programmes or lecturers still depend on it.</td></tr>
+  <tr><td>Which DBMS does it target?</td><td>MySQL 8 or PostgreSQL. The SQL works on both.</td></tr>
+</table>
+<p class="tip">Tip: speak slowly, point at the diagram when you name a relationship, and keep each slide to its time.</p>
+</section>
+</body>
+</html>

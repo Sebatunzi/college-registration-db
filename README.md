@@ -11,6 +11,7 @@ conceptual model and relational tables with suitable data types.
 |---|---|
 | [`docs/Database_Design_Specification.pdf`](docs/Database_Design_Specification.pdf) | **The one-page database design specification** (main deliverable) |
 | [`docs/Presentation_Slides.pdf`](docs/Presentation_Slides.pdf) | 6-slide deck for presenting the work |
+| [`docs/Presentation_Notes.pdf`](docs/Presentation_Notes.pdf) | Speaker notes: what to say on each slide, plus likely questions and answers |
 | [`diagrams/college_registration.drawio`](diagrams/college_registration.drawio) | Draw.io file. Page 1: conceptual ERD (Chen notation); page 2: relational schema (crow's foot) |
 | [`diagrams/*.png`, `*.svg`](diagrams/) | Exported images of both diagrams |
 | [`docs/requirements.md`](docs/requirements.md) | Full requirements: users, processes, entities, attributes, business rules, design checks |
